@@ -1,3 +1,0 @@
-r-base
-r-cran-ggplot2
-vim
