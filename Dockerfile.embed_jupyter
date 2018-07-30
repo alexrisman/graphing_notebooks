@@ -1,0 +1,6 @@
+FROM jupyter/scipy-notebook
+RUN mkdir /home/jovyan/.jupyter/
+COPY jupyter_notebook_config.py /home/jovyan/.jupyter/
+COPY ssl/jupyter.key /etc/ssl/notebook/
+COPY ssl/jupyter.crt /etc/ssl/notebook/
+CMD jupyter notebook --no-browser

@@ -1,0 +1,11 @@
+- embedding running widgets on static webpage
+    - looks like you need running jupyter server/kernel to have interactive widgets on a static webpage
+        - https://github.com/jupyter-widgets/ipywidgets/issues/1540
+        - https://github.com/jupyter-widgets/ipywidgets/tree/6.x/jupyter-js-widgets/examples/web3
+- embedding nbviewer page
+    - to use "embed block", squarespace requires link to support oembed standard
+    - https://www.adorevolution.com/itp/rwet-hw2
+    - having trouble viewing embedded nbviewer links on chrome, but they appear to work on firefox
+        - put the following in an embed block on squarespace: 
+            <iframe src="https://nbviewer.jupyter.org/github/jupyter-widgets/ipywidgets/blob/master/docs/source/examples/Widget%20List.ipynb" width="100%" height="3600" scrolling="yes" frameborder="0"></iframe>
+    - https://ipywidgets.readthedocs.io/en/latest/embedding.html#rendering-interactive-widgets-on-nbviewer
