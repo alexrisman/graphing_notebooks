@@ -1,4 +1,5 @@
 ARG DOCKER_NOTEBOOK_IMAGE
 FROM $DOCKER_NOTEBOOK_IMAGE
 ARG JUPYTERHUB_VERSION
+COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/
 RUN python3 -m pip install --no-cache jupyterhub==$JUPYTERHUB_VERSION

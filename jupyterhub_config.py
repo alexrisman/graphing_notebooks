@@ -43,6 +43,7 @@ c.DockerSpawner.volumes = { 'jupyterhub-data': notebook_dir }
 c.DockerSpawner.remove_containers = True
 # For debugging arguments passed to spawned containers
 c.DockerSpawner.debug = True
+# c.DockerSpawner.args = ["""--NotebookApp.tornado_settings={'headers': {'Content-Security-Policy': "frame-ancestors *.armath.net *.squarespace.com 'self' "}}"""]
 
 # User containers will access hub by container name on the Docker network
 c.JupyterHub.hub_ip = 'jupyterhub'
