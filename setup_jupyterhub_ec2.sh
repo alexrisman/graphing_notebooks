@@ -74,8 +74,11 @@ docker volume create --name jupyterhub-data
 docker run -v jupyterhub-data:/data --name helper busybox true
 docker cp /home/ubuntu/graphing_notebooks/. helper:/data
 docker rm helper
-# need to add notebook config file to singleuser for it to work
+# need to add notebook config file to singleuser for it to work when single user notebook servers are launched
 cp ~/.jupyter/jupyter_notebook_config.py singleuser/
+# tmpauthenticator to remove login requirement (probably just need this in dockerfile)
+pip install jupyterhub-tmpauthenticator
+# build and deploy commands
 make build
 # change .env file to look at scipy-notebook before this step
 make notebook_image
