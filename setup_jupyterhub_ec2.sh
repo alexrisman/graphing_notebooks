@@ -78,7 +78,7 @@ docker rm helper
 cp ~/.jupyter/jupyter_notebook_config.py singleuser/
 # tmpauthenticator to remove login requirement (probably just need this in dockerfile)
 pip install jupyterhub-tmpauthenticator
-# build and deploy commands
+# build and deploy commands (note: need to run the "docker volume" stuff if you make changes to default notebooks through git or something)
 make build
 # change .env file to look at scipy-notebook before this step
 make notebook_image
