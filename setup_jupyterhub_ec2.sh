@@ -70,6 +70,9 @@ cd ..
 sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 # tried to change Dockerfile.jupyterhub and jupyter_hub_config to not use certificates in secrets, but didn't work, ELB just not playing nice with this, so tried let's encrypt certs, that worked
+cd ~/graphing_notebooks
+git pull origin master
+# if not a new volume and want to clean old one, run: docker system prune; docker volume rm -f jupyterhub-data
 docker volume create --name jupyterhub-data
 docker run -v jupyterhub-data:/data --name helper busybox true
 docker cp /home/ubuntu/graphing_notebooks/. helper:/data
