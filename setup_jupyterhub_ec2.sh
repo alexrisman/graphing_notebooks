@@ -59,11 +59,17 @@ docker push 914713380953.dkr.ecr.us-east-1.amazonaws.com/embed_jupyter
 # try for jupyterhub: https://github.com/jupyterhub/jupyterhub-deploy-docker
 git clone https://github.com/mthmn20/graphing_notebooks.git
 git clone https://github.com/jupyterhub/jupyterhub-deploy-docker.git
+# get let's encrypt certificate using certbot
+sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot -y
+sudo certbot certonly --standalone -d armathnotebooks.com -d www.armathnotebooks.com
 cd jupyterhub-deploy-docker
 echo "mthmn20 admin" >> userlist
 mkdir secrets
 cd secrets
-sudo cp /etc/letsencrypt/live/armathnotebooks.com/cert.pem jupyterhub.crt
+sudo cp /etc/letsencrypt/live/armathnotebooks.com/fullchain.pem jupyterhub.crt
 sudo cp /etc/letsencrypt/live/armathnotebooks.com/privkey.pem jupyterhub.key
 vim oauth.env
 cd ..
@@ -93,12 +99,7 @@ docker-compose down
 #    /etc/letsencrypt/live/armathnotebooks.com/fullchain.pem
 #    Your key file has been saved at:
 #    /etc/letsencrypt/live/armathnotebooks.com/privkey.pem
-#    Your cert will expire on 2018-10-27. To obtain a new or tweaked
-#    version of this certificate in the future, simply run
-#    letsencrypt-auto again. To non-interactively renew *all* of your
-#    certificates, run "letsencrypt-auto renew"
-#  - Your account credentials have been saved in your Certbot
-#    configuration directory at /etc/letsencrypt. You should make a
-#    secure backup of this folder now. This configuration directory will
-#    also contain certificates and private keys obtained by Certbot so
-#    making regular backups of this folder is ideal.
+#    Your cert will expire on 2018-11-07. To obtain a new or tweaked
+#    version of this certificate in the future, simply run certbot
+#    again. To non-interactively renew *all* of your certificates, run
+#    "certbot renew"
